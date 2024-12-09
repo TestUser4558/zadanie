@@ -14,11 +14,11 @@ $prod= $prodq->fetchAll(PDO::FETCH_ASSOC);
     </head>
     <body>
      <table>
-        <tr><td>Name</td><td>Cost</td><td>Article</td><td><a href="/zadanie/create.php">Add new product</a></td><td><a href="/zadanie/postup.php">Add product to base</a></td></tr>
+        <tr><td>Name</td><td>Cost</td><td>Article</td><td><a href="/zadanie/create.php">Add new product</a></td><td><a href="/zadanie/postup.php">Add arrive of product</a></td></tr>
         <?foreach($prod as $pr):?>
            <tr>
            <td><?=$pr['name']?></td>
-           <td><?=$pr['how-much']?></td>
+           <td><?=$pr['how_much']?></td>
            <td><?=$pr['id']?></td>
            </tr> 
         <?endforeach?>
