@@ -1,5 +1,8 @@
 <?php
-
+$pdo = require $_SERVER['DOCUMENT_ROOT'] . '/zadanie/db.php';
+$prodq = $pdo->prepare('select * from products');
+$prodq->execute();
+$prod= $prodq->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +13,15 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-    
+     <table>
+        <tr><td>Name</td><td>Cost</td><td>Article</td><td><a href="/zadanie/create.php">Add new product</a></td><td><a href="/zadanie/postup.php">Add product to base</a></td></tr>
+        <?foreach($prod as $pr):?>
+           <tr>
+           <td><?=$pr['name']?></td>
+           <td><?=$pr['how-much']?></td>
+           <td><?=$pr['id']?></td>
+           </tr> 
+        <?endforeach?>
+     </table> 
     </body>
 </html>
