@@ -23,7 +23,8 @@ $products = $products->fetchAll(PDO::FETCH_ASSOC);
             <? foreach ($products as $prod): ?>
                 <option value="<?= $prod['id'] ?>"><?= $prod['name'] ?></option>
             <? endforeach ?>
-        </select>
+        </select><br>
+        <a href="/zadanie/create.php">create a new product</a>
         <br>
         <label for="amount">amount of product</label>
         <input type="number" id="amount" name="amount">
