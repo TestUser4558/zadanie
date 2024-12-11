@@ -1,6 +1,6 @@
 <?php
 $pdo = require $_SERVER['DOCUMENT_ROOT'] . '/zadanie/db.php';
-$prodq = $pdo->prepare('select * from products');
+$prodq = $pdo->prepare('SELECT products.*, sum(uchet_tovarov.amount) as amount from products left join uchet_tovarov on uchet_tovarov.product_id = products.id group by products.id');
 $prodq->execute();
 $prod= $prodq->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -15,11 +15,14 @@ $prod= $prodq->fetchAll(PDO::FETCH_ASSOC);
     <body>
      <a href="/zadanie/arrivals.php">Arrivals</a>
      <table>
-        <tr><td>Name</td><td>Cost</td><td>Article</td><td><a href="/zadanie/create.php">Add new product</a></td><td><a href="/zadanie/postup.php">Add arrive of product</a></td></tr>
+        <tr><td>Name</td><td>Cost</td><td>Amount</td><td>Article</td><td><a href="/zadanie/create.php">Add new product</a></td><td><a href="/zadanie/postup.php">Add arrive of product</a></td></tr>
         <?foreach($prod as $pr):?>
+           <?if($pr['amount'] == null){$pr['amount']=0;}
+?>
            <tr>
            <td><?=$pr['name']?></td>
            <td><?=$pr['how_much']?></td>
+           <td><?=$pr['amount']?></td>
            <td><?=$pr['id']?></td>
            </tr> 
         <?endforeach?>
