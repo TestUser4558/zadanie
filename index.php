@@ -13,9 +13,9 @@ $prod= $prodq->fetchAll(PDO::FETCH_ASSOC);
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-     <a href="/zadanie/arrivals.php">Arrivals</a>
+     <a href="/zadanie/arrivals.php" id="arr">Arrivals</a>
      <table>
-        <tr><td>Name</td><td>Cost</td><td>Amount</td><td>Article</td><td><a href="/zadanie/create.php">Add new product</a></td><td><a href="/zadanie/postup.php">Add arrive of product</a></td></tr>
+        <tr><td>Name</td><td>Cost</td><td>Amount</td><td>Article</td><td><a href="/zadanie/create.php" id="create">Add new product</a></td><td><a href="/zadanie/postup.php" id="#postup">Add arrive of product</a></td></tr>
         <?foreach($prod as $pr):?>
            <?if($pr['amount'] == null){$pr['amount']=0;}
 ?>
